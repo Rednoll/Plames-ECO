@@ -33,3 +33,4 @@ out/
 
 /test work directory
 gradle
+src/main/resources/static/node_modules

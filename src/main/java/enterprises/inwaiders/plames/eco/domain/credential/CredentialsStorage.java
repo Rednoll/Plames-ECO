@@ -5,16 +5,20 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Embeddable;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-
-import org.springframework.transaction.support.TransactionSynchronizationManager;
+import javax.persistence.OneToOne;
 
 import enterprises.inwaiders.plames.eco.dto.credential.CredentialDto;
 import enterprises.inwaiders.plames.eco.dto.credential.CredentialsStorageDto;
 
 @Embeddable
 public class CredentialsStorage {
-
+	
+	@JoinColumn(name = "main_credential_id")
+	@OneToOne
+	private PlamesCredential main = null;
+	
 	@OneToMany(cascade = CascadeType.ALL)
 	private Set<Credential> credentials = new HashSet<>();
 
@@ -39,12 +43,24 @@ public class CredentialsStorage {
 	
 	public void toDto(CredentialsStorageDto dto) {
 		
+		dto.main = main.toDto();
+		
 		dto.credentials = new HashSet<>();
 	
 		for(Credential cred : credentials) {
 			
 			dto.credentials.add(cred.toDto());
 		}
+	}
+	
+	public void setMain(PlamesCredential credential) {
+		
+		this.main = credential;
+	}
+	
+	public PlamesCredential getMain() {
+		
+		return this.main;
 	}
 	
 	public void addCredential(Credential cred) {

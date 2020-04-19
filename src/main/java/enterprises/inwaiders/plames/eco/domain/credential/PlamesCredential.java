@@ -10,12 +10,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import enterprises.inwaiders.plames.eco.dao.credential.PlamesCredentialRepository;
 import enterprises.inwaiders.plames.eco.dto.credential.PlamesCredentialDto;
 
 @Entity(name = "PlamesCredential")
 @Table(name = "plames_credentials")
 public class PlamesCredential extends Credential<PlamesCredentialDto> {
-
+	
+	private static PlamesCredentialRepository repository;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
@@ -89,8 +92,27 @@ public class PlamesCredential extends Credential<PlamesCredentialDto> {
 		return this.password;
 	}
 	
+	public void save() {
+		
+		repository.save(this);
+	}
+	
 	public Long getId() {
 		
 		return this.id;
+	}
+	
+	public static PlamesCredential create() {
+		
+		PlamesCredential cred = new PlamesCredential();
+		
+		cred = repository.saveAndFlush(cred);
+		
+		return cred;
+	}
+	
+	public static void setRepository(PlamesCredentialRepository rep) {
+		
+		repository = rep;
 	}
 }

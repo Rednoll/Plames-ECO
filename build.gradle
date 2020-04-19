@@ -27,6 +27,8 @@ bootJar {
 jar {
 
 	enabled = true
+
+	exclude("static/node_modules/**");
 }
 
 dependencies {
