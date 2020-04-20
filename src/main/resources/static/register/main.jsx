@@ -5,6 +5,7 @@ import { withStyles } from "@material-ui/core/styles";
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
 import styles from "./jss_styles.js";
+import mainTheme from "../common/jss_styles.jsx";
 
 let registerForm = null;
 
@@ -102,15 +103,6 @@ const passValidator = (e) => {
 		});
 	}
 };
-
-const mainTheme = createMuiTheme({
-	
-	palette: {
-
-		primary: { main: "#B0D5F2" },
-		error: { main: "#FF1E45" }
-	}
-});
 
 class RegisterForm extends React.Component {
 

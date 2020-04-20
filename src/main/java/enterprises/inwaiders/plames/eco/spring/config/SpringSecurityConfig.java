@@ -36,7 +36,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
 		http
 			.authorizeRequests()
-			.antMatchers("/resources/**", "/web/controller/**", "/api/**", "/self/**", "/register", "/register_action").permitAll();
+			.antMatchers("/resources/**", "/web/controller/**", "/api/**", "/self/**", "/register").permitAll();
 	
 		http
 			.authorizeRequests()
@@ -49,7 +49,6 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 				.and()
 			.logout()
 				.permitAll();
-		
 		
 		http
 			.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))

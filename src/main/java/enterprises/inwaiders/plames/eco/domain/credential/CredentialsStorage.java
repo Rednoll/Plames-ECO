@@ -43,7 +43,10 @@ public class CredentialsStorage {
 	
 	public void toDto(CredentialsStorageDto dto) {
 		
-		dto.main = main.toDto();
+		if(main != null) {
+			
+			dto.main = main.toDto();
+		}
 		
 		dto.credentials = new HashSet<>();
 	

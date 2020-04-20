@@ -4,7 +4,8 @@ var webpack = require('webpack');
 module.exports = {
 	entry: {
 		
-		register: "./register/main.jsx"
+		register: "./register/main.jsx",
+		login: "./login/main.jsx"
 		
 	},
 	output: {

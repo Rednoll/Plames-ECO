@@ -46,13 +46,21 @@ public class User {
 	@Embedded
 	private EmailsStorage emails = new EmailsStorage();
 	
+	public User() {
+		
+		if(roles.isEmpty()) {
+			
+			roles.add("ROLE_USER");
+		}
+	}
+	
 	public UserDetails getUserDetails() {
 		
 		List<GrantedAuthority> grantedAuthority = getGrantedAuthority();
 		
 		PlamesCredential credential = credentials.getMain();
 		
-		UserDetails user = new org.springframework.security.core.userdetails.User(credential.getLogin(), credential.getPassword().toString(), grantedAuthority);
+		UserDetails user = new org.springframework.security.core.userdetails.User(credential.getLogin(), new String(credential.getPassword()), grantedAuthority);
 	
 		return user;
 	}
@@ -87,7 +95,7 @@ public class User {
 		
 		dto.id = id;
 		dto.nickname = nickname;
-		dto.credentials = credentials.toDto();
+//		dto.credentials = credentials.toDto();
 	}
 	
 	public void setNickname(String name) {
