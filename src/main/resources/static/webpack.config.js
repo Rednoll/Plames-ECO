@@ -4,12 +4,12 @@ var webpack = require('webpack');
 module.exports = {
 	entry: {
 		
-		register: "./register/main.jsx",
-		login: "./login/main.jsx"
+		register: "./eco/register/main.jsx",
+		login: "./eco/login/main.jsx"
 		
 	},
 	output: {
-		path: path.join(__dirname, 'generated'),
+		path: path.join(__dirname, 'eco/generated'),
 		filename: '[name].bundle.js'
 	},
 	resolve: {

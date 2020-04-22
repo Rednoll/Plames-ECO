@@ -1,0 +1,51 @@
+@font-face {
+
+	font-family: "Metropolis";
+	src: url("../eco/common/fonts/Metropolis-Light.otf") format("opentype");
+	font-weight: lighter;
+}
+
+@font-face {
+
+	font-family: "Metropolis";
+	src: url("../eco/common/fonts/Metropolis-Medium.otf") format("opentype");
+}
+
+@font-face {
+
+	font-family: "Metropolis";
+	src: url("../eco/common/fonts/Metropolis-Bold.otf") format("opentype");
+	font-weight: bold;
+}
+
+.prototype {
+
+    display: none !important;
+}
+
+.plames-main-button {
+
+	font-family: "Metropolis", Arial, sans-serif;
+	font-size: 18;
+	font-weight: 550;
+	color: white;
+	letter-spacing: 0.125em;
+
+	background-color: #BAE1FF;
+	outline-width: 0;
+	border: 4px solid #9EBFD8;
+
+	padding: 7px 12px 5px 12px;
+
+	transition-duration: 0.3s;
+}
+
+.plames-main-button:hover {
+
+	color: white;
+	background-color: #B0D5F2;
+	border-color: #95B3C9;
+	cursor: pointer; 
+
+	transition-duration: 0.3s;
+}

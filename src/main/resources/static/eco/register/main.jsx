@@ -153,6 +153,8 @@ class RegisterForm extends React.Component {
 					
 					</ThemeProvider>
 
+					<button type="submit" class="plames-main-button">REGISTER</button>
+
 				</div>
 
 			</form>

@@ -34,7 +34,7 @@ class LoginForm extends React.Component {
 
 			<form id="login-form" name="f" action="login" method="POST">
 
-				<img id="login-plames-icon" src="../resources/common/images/plames-color-icon.svg"></img>
+				<img id="login-plames-icon" src="../resources/eco/common/images/plames-color-icon.svg"></img>
 
 				<div id="login-form-fields-container">
 
@@ -45,6 +45,8 @@ class LoginForm extends React.Component {
 						<TextField fullWidth id="pass-field" name="password" InputProps={{ classes: { input: classes.loginFormFieldInput } }} className={classes.loginFormField} error={!this.state.passValid} helperText={this.state.passHelperText} label="Password" type={this.state.showPass ? "text" : "password"} />
 					
 					</ThemeProvider>
+
+					<button type="submit" class="plames-main-button">LOGIN</button>
 
 				</div>
 

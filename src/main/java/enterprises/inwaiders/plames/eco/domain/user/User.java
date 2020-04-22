@@ -3,13 +3,16 @@ package enterprises.inwaiders.plames.eco.domain.user;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+import javax.persistence.AssociationOverride;
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Table;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -20,6 +23,9 @@ import enterprises.inwaiders.plames.eco.dao.user.UserRepository;
 import enterprises.inwaiders.plames.eco.domain.credential.Credential;
 import enterprises.inwaiders.plames.eco.domain.credential.CredentialsStorage;
 import enterprises.inwaiders.plames.eco.domain.credential.PlamesCredential;
+import enterprises.inwaiders.plames.eco.domain.roles.Privilege;
+import enterprises.inwaiders.plames.eco.domain.roles.Role;
+import enterprises.inwaiders.plames.eco.domain.roles.additionals.RolesStorage;
 import enterprises.inwaiders.plames.eco.domain.user.additionals.EmailsStorage;
 import enterprises.inwaiders.plames.eco.dto.user.UserDto;
 
@@ -36,9 +42,9 @@ public class User {
 	@Column(name = "nickname")
 	private String nickname = null;
 	
-	@Column(name = "roles")
-	@ElementCollection
-	private List<String> roles = new ArrayList<>();
+	@Embedded
+	@AssociationOverride(name = "roles", joinTable = @JoinTable(name = "users_roles_mtm", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id")))
+	private RolesStorage roles = new RolesStorage();
 	
 	@Embedded
 	private CredentialsStorage credentials = new CredentialsStorage();
@@ -48,9 +54,14 @@ public class User {
 	
 	public User() {
 		
+	}
+	
+	@PostConstruct
+	private void postConstruct() {
+		
 		if(roles.isEmpty()) {
 			
-			roles.add("ROLE_USER");
+			roles.add(Role.findByName("USER"));
 		}
 	}
 	
@@ -69,9 +80,14 @@ public class User {
 		
 		List<GrantedAuthority> result = new ArrayList<>();
 		
-		for(String role : roles) {
+		for(Role role : roles) {
 			
-			result.add(new SimpleGrantedAuthority(role));
+			for(Privilege privilege : role.getPrivileges()) {
+				
+				result.add(new SimpleGrantedAuthority(privilege.getName()));
+			}
+			
+			result.add(new SimpleGrantedAuthority("ROLE_"+role.getName()));
 		}
 		
 		return result;
