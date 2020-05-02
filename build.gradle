@@ -19,6 +19,17 @@ repositories {
 	mavenCentral()
 }
 
+sourceSets {
+
+    main {
+	
+		resources {
+		
+			exclude 'static/node_modules/**'
+		}
+   }
+}
+
 bootJar {
 
 	enabled = false

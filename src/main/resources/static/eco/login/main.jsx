@@ -40,11 +40,15 @@ class LoginForm extends React.Component {
 
 					<ThemeProvider theme={mainTheme}>
 						
-						<TextField fullWidth id="login-field" name="username" InputProps={{ classes: { input: classes.loginFormFieldInput } }} className={classes.loginFormField} error={!this.state.loginValid} helperText={this.state.loginHelperText} label="Login" />
+						<TextField fullWidth id="login-field" name="username" className={classes.margin} error={!this.state.loginValid} helperText={this.state.loginHelperText} label="Login" />
 	
-						<TextField fullWidth id="pass-field" name="password" InputProps={{ classes: { input: classes.loginFormFieldInput } }} className={classes.loginFormField} error={!this.state.passValid} helperText={this.state.passHelperText} label="Password" type={this.state.showPass ? "text" : "password"} />
+						<TextField fullWidth id="pass-field" name="password" error={!this.state.passValid} helperText={this.state.passHelperText} label="Password" type={this.state.showPass ? "text" : "password"} />
 					
 					</ThemeProvider>
+
+				</div>
+
+				<div id="login-form-buttons-container">
 
 					<button type="submit" class="plames-main-button">LOGIN</button>
 

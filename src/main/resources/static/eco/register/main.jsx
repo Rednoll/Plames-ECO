@@ -135,21 +135,21 @@ class RegisterForm extends React.Component {
 
 			<form id="register-form" name="register-form" action="#" method="POST" modelAttribute="registerForm">
 
-				<img id="register-plames-icon" src="../resources/common/images/plames-color-icon.svg"></img>
+				<img id="register-plames-icon" src="../resources/eco/common/images/plames-color-icon.svg"></img>
 
 				<div id="register-form-fields-container">
 
 					<ThemeProvider theme={mainTheme}>
 						
-						<TextField fullWidth id="nickname-field" name="nickname" onChange={nicknameValidator} InputProps={{ classes: { input: classes.registerFormFieldInput } }} className={classes.registerFormField} error={!this.state.nicknameValid} helperText={this.state.nicknameHelperText} label="Nickname" />
+						<TextField fullWidth id="nickname-field" name="nickname" onChange={nicknameValidator} className={classes.registerFormField} error={!this.state.nicknameValid} helperText={this.state.nicknameHelperText} label="Nickname" />
 
-						<TextField fullWidth id="login-field" name="login" onChange={loginValidator} InputProps={{ classes: { input: classes.registerFormFieldInput } }} className={classes.registerFormField} error={!this.state.loginValid} helperText={this.state.loginHelperText} label="Login" />
+						<TextField fullWidth id="login-field" name="login" onChange={loginValidator} className={classes.registerFormField} error={!this.state.loginValid} helperText={this.state.loginHelperText} label="Login" />
 
-						<TextField fullWidth id="email-field" name="email" onChange={emailValidator} color="#BAE1FF" InputProps={{ classes: { input: classes.registerFormFieldInput } }} className={classes.registerFormField} error={!this.state.emailValid} helperText={this.state.emailHelperText} label="Email" />
+						<TextField fullWidth id="email-field" name="email" onChange={emailValidator} className={classes.registerFormField} error={!this.state.emailValid} helperText={this.state.emailHelperText} label="Email" />
 						
-						<TextField fullWidth id="pass-field" name="pass" onChange={passValidator} InputProps={{ classes: { input: classes.registerFormFieldInput } }} className={classes.registerFormField} error={!this.state.passValid} helperText={this.state.passHelperText} label="Password" type={this.state.showPass ? "text" : "password"} />
+						<TextField fullWidth id="pass-field" name="pass" onChange={passValidator} className={classes.registerFormField} error={!this.state.passValid} helperText={this.state.passHelperText} label="Password" type={this.state.showPass ? "text" : "password"} />
 						
-						<TextField fullWidth id="pass-re-field" onChange={passValidator} InputProps={{ classes: { input: classes.registerFormFieldInput } }} className={classes.registerFormField} error={!this.state.passReValid} helperText={this.state.passReHelperText} label="Re-enter" type={this.state.showPass ? "text" : "password"} />
+						<TextField fullWidth id="pass-re-field" onChange={passValidator} className={classes.registerFormField} error={!this.state.passReValid} helperText={this.state.passReHelperText} label="Re-enter" type={this.state.showPass ? "text" : "password"} />
 					
 					</ThemeProvider>
 

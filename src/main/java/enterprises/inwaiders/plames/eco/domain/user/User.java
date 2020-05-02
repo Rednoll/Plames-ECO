@@ -2,8 +2,8 @@ package enterprises.inwaiders.plames.eco.domain.user;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
-import javax.annotation.PostConstruct;
 import javax.persistence.AssociationOverride;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.PostLoad;
 import javax.persistence.Table;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -42,6 +43,9 @@ public class User {
 	@Column(name = "nickname")
 	private String nickname = null;
 	
+	@Column(name = "product_key")
+	private UUID productKey;
+	
 	@Embedded
 	@AssociationOverride(name = "roles", joinTable = @JoinTable(name = "users_roles_mtm", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id")))
 	private RolesStorage roles = new RolesStorage();
@@ -56,12 +60,26 @@ public class User {
 		
 	}
 	
-	@PostConstruct
+	@PostLoad
 	private void postConstruct() {
+		
+		boolean hasChanges = false;
 		
 		if(roles.isEmpty()) {
 			
 			roles.add(Role.findByName("USER"));
+			hasChanges = true;
+		}
+		
+		if(productKey == null) {
+			
+			productKey = UUID.randomUUID();
+			hasChanges = true;
+		}
+		
+		if(hasChanges) {
+			
+			save();
 		}
 	}
 	
@@ -112,6 +130,16 @@ public class User {
 		dto.id = id;
 		dto.nickname = nickname;
 //		dto.credentials = credentials.toDto();
+	}
+	
+	public void setProductKey(UUID key) {
+		
+		this.productKey = key;
+	}
+	
+	public UUID getProductKey() {
+		
+		return this.productKey;
 	}
 	
 	public void setNickname(String name) {

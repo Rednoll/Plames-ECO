@@ -35,6 +35,11 @@ public class PlamesCredential extends Credential<PlamesCredentialDto> {
 		this.password = dto.password;
 	}
 	
+	public String getDisplayId() {
+		
+		return login;
+	}
+	
 	public PlamesCredentialDto toDto() {
 		
 		PlamesCredentialDto dto = new PlamesCredentialDto();

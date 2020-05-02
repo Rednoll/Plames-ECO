@@ -64,3 +64,16 @@
 	height: 100%;
 	width: 60%;
 }
+
+#login-form-buttons-container {
+
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+
+	box-sizing: border-box;
+
+	height: 100%;
+	width: 100%;
+}

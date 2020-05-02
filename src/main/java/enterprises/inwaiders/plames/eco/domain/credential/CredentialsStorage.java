@@ -1,6 +1,8 @@
 package enterprises.inwaiders.plames.eco.domain.credential;
 
+import java.util.Collection;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -84,7 +86,7 @@ public class CredentialsStorage {
 		return null;
 	}
 	
-	public Set<Credential> getCredentials() {
+	public Set<Credential> getAll() {
 	
 		return this.credentials;
 	}

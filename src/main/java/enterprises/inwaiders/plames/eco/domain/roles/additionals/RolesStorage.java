@@ -53,6 +53,8 @@ public class RolesStorage implements Collection<Role> {
 	@Override
 	public boolean add(Role e) {
 		
+		if(e == null) return false;
+		
 		return roles.add(e);
 	}
 

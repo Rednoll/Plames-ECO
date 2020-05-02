@@ -2,7 +2,9 @@ package enterprises.inwaiders.plames.eco.dto.credential;
 
 import java.util.Set;
 
-public class CredentialsStorageDto {
+import enterprises.inwaiders.plames.eco.dto.DtoBase;
+
+public class CredentialsStorageDto extends DtoBase {
 	
 	public PlamesCredentialDto main;
 	public Set<CredentialDto> credentials;

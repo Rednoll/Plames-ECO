@@ -31,6 +31,8 @@ public abstract class Credential<DTO extends CredentialDto> {
 		dto.id = id;
 	}
 	
+	public abstract String getDisplayId();
+	
 	public Long getId() {
 		
 		return this.id;
